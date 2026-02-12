@@ -25,6 +25,7 @@ public class Ladron extends Personaje
             super.recibirDanio(danio);
         }
     }
+    
     @Override
     protected void alSubirNivel() 
     {
