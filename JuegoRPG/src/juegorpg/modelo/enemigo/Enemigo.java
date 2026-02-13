@@ -2,7 +2,7 @@ package juegorpg.modelo.enemigo;
 
 import juegorpg.modelo.Entidad;
 
-public class Enemigo extends Entidad
+public abstract class Enemigo extends Entidad
 {
     private int experienciaAlMorir;
     private int oroAlMorir;
@@ -17,14 +17,42 @@ public class Enemigo extends Entidad
     }
     
 
+    public abstract String obtenerDescripcion();
+    public abstract int calcularDanioAtaque();
 
-    @Override
-    public int calcularDanioAtaque() 
+    public int getExperienciaAlMorir() 
     {
+        return experienciaAlMorir;
     }
 
-    @Override
-    public String obtenerDescripcion() 
+    public int getOroAlMorir() 
     {
+        return oroAlMorir;
+    }
+
+    public int getDificultad() 
+    {
+        return dificultad;
+    }
+
+    public void setExperienciaAlMorir(int experienciaAlMorir) 
+    {
+        this.experienciaAlMorir = experienciaAlMorir;
+    }
+
+    public void setOroAlMorir(int oroAlMorir) 
+    {
+        this.oroAlMorir = oroAlMorir;
+    }
+
+    public void setDificultad(int dificultad) 
+    {
+        this.dificultad = dificultad;
+    }
+    
+    @Override
+    public String toString() 
+    {
+        return super.toString() + " | EXP: " + experienciaAlMorir + " | ORO: " + oroAlMorir + " | Dificultad: " + dificultad;
     }
 }

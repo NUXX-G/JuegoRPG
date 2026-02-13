@@ -1,5 +1,9 @@
 package juegorpg;
 
+import juegorpg.modelo.enemigo.BossFinal;
+import juegorpg.modelo.enemigo.Dragon;
+import juegorpg.modelo.enemigo.Goblin;
+import juegorpg.modelo.enemigo.Orco;
 import juegorpg.modelo.personaje.Arquero;
 import juegorpg.modelo.personaje.Guerrero;
 import juegorpg.modelo.personaje.Ladron;
@@ -10,6 +14,7 @@ public class JuegoRPG
 
     public static void main(String[] args) 
     {
+        //PERSONAJE
         Guerrero guerrero1 = new Guerrero("Guerrero1");
         Mago mago1 = new Mago("Mago1");
         Arquero arquero1 = new Arquero("Arquero1");
@@ -57,6 +62,69 @@ public class JuegoRPG
         System.out.println(ladron1.getNombre() + " recibe 100 de experiencia");
         ladron1.ganarExperiencia(100);
         System.out.println(ladron1.toString());
+        System.out.println("");
+        
+        
+        //ENEMIGO
+        Goblin goblin1 = new Goblin(1);
+        Orco orco1 = new Orco(1);
+        Dragon dragon1 = new Dragon(1);
+        BossFinal bossFinal1 = new BossFinal(1);
+        
+        System.out.println("--- GOBLIN ---");
+        System.out.println(goblin1.obtenerDescripcion());
+        System.out.println(goblin1.toString());
+        System.out.println(goblin1.getNombre() + " recibe 20 de danio");
+        goblin1.recibirDanio(20);
+        goblin1.recibirDanio(20);
+        goblin1.recibirDanio(20);
+        System.out.println(goblin1.toString());
+        System.out.println("Daño: " + goblin1.calcularDanioAtaque());
+        System.out.println("Daño: " + goblin1.calcularDanioAtaque());
+        System.out.println("Daño: " + goblin1.calcularDanioAtaque());
+        System.out.println("Daño: " + goblin1.calcularDanioAtaque());
+        System.out.println("");
+        
+        System.out.println("--- ORCO ---");
+        System.out.println(orco1.obtenerDescripcion());
+        System.out.println(orco1.toString());
+        System.out.println(orco1.getNombre() + " recibe 20 de danio");
+        orco1.recibirDanio(20);
+        orco1.recibirDanio(20);
+        orco1.recibirDanio(20);
+        System.out.println(orco1.toString());
+        System.out.println("Daño: " + orco1.calcularDanioAtaque());
+        System.out.println("Daño: " + orco1.calcularDanioAtaque());
+        System.out.println("Daño: " + orco1.calcularDanioAtaque());
+        System.out.println("Daño: " + orco1.calcularDanioAtaque());
+        System.out.println("");
+        
+        System.out.println("--- DRAGON ---");
+        System.out.println(dragon1.obtenerDescripcion());
+        System.out.println(dragon1.toString());
+        System.out.println(dragon1.getNombre() + " recibe 20 de danio");
+        dragon1.recibirDanio(20);
+        dragon1.recibirDanio(20);
+        dragon1.recibirDanio(20);
+        System.out.println(dragon1.toString());
+        System.out.println("Daño: " + dragon1.calcularDanioAtaque());
+        System.out.println("Daño: " + dragon1.calcularDanioAtaque());
+        System.out.println("Daño: " + dragon1.calcularDanioAtaque());
+        System.out.println("Daño: " + dragon1.calcularDanioAtaque());
+        System.out.println("");
+        
+        System.out.println("--- BOSS FINAL ---");
+        System.out.println(bossFinal1.obtenerDescripcion());
+        System.out.println(bossFinal1.toString());
+        System.out.println(bossFinal1.getNombre() + " recibe 50 de danio");
+        bossFinal1.recibirDanio(50);
+        System.out.println(bossFinal1.toString());
+        System.out.println("Danio: " + bossFinal1.calcularDanioAtaque());
+        System.out.println("Danio: " + bossFinal1.calcularDanioAtaque());
+        bossFinal1.recibirDanio(50);
+        System.out.println("Danio: " + bossFinal1.calcularDanioAtaque());
+        System.out.println("Danio: " + bossFinal1.calcularDanioAtaque());
+        System.out.println(bossFinal1.toString());
         System.out.println("");
     }
     
