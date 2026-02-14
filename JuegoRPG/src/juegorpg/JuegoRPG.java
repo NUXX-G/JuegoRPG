@@ -16,6 +16,8 @@ import juegorpg.modelo.personaje.Mago;
 import juegorpg.combate.SistemaCombate;
 import juegorpg.modelo.enemigo.Enemigo;
 import juegorpg.modelo.personaje.Personaje;
+import juegorpg.narrativa.ArbolNarrativo;
+import juegorpg.narrativa.Nodo;
 
 public class JuegoRPG 
 {
@@ -231,6 +233,37 @@ public class JuegoRPG
         System.out.println("--- ESTADO FINAL DEL COMBATE ---");
         System.out.println(combate.obtenerEstadoCombate());
 
+        
+        //ArbolNarrativo 
+        ArbolNarrativo arbolNarrativo = new ArbolNarrativo();
+        System.out.println("--- INICIAR HISTORIA ---");
+        arbolNarrativo.iniciar();
+        System.out.println("");
+        System.out.println("--- NODO ACTUAL ---");
+        Nodo nodo = arbolNarrativo.getNodoActual();
+        System.out.println(nodo.getDescripcion());
+        System.out.println("Opciones:");
+        for (int i = 0; i < nodo.getOpciones().size(); i++) 
+        {
+            System.out.println("[" + i + "] " + nodo.getOpciones().get(i).getTexto());
+        }
+        System.out.println("");
+        
+        System.out.println("--- AVANZAR A LA OPCION 0 ---");
+        arbolNarrativo.avanzar(0);
+        Nodo nodo2 = arbolNarrativo.getNodoActual();
+        System.out.println(nodo2.getDescripcion());
+        System.out.println("Opciones:");
+        for (int i = 0; i < nodo2.getOpciones().size(); i++) 
+        {
+            System.out.println("[" + i + "] " + nodo2.getOpciones().get(i).getTexto());
+        }
+        System.out.println("");
+        
+        System.out.println("--- MOSTRAR COMBATE SI LO HAY ---");
+        if (arbolNarrativo.getNodoActual().tieneCombate()) 
+        {
+            System.out.println("Enemigo: " + arbolNarrativo.getNodoActual().getEnemigo().getNombre());
+        }
     }
-    
 }
