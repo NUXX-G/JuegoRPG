@@ -13,6 +13,9 @@ import juegorpg.modelo.personaje.Arquero;
 import juegorpg.modelo.personaje.Guerrero;
 import juegorpg.modelo.personaje.Ladron;
 import juegorpg.modelo.personaje.Mago;
+import juegorpg.combate.SistemaCombate;
+import juegorpg.modelo.enemigo.Enemigo;
+import juegorpg.modelo.personaje.Personaje;
 
 public class JuegoRPG 
 {
@@ -208,6 +211,25 @@ public class JuegoRPG
         System.out.println("Daño de " + percy.getNombre() + " " + percy.obtenerHabilidad(0).calcularDanio(percy.getAtaque()));
         System.out.println("");
         
+        
+        //GeneradorRNG SistemaCombate
+        Personaje heroe = new Guerrero("Heroe");
+        Enemigo goblinHeroe = new Goblin(3);
+        SistemaCombate combate = new SistemaCombate(heroe, goblinHeroe);
+        
+        System.out.println("--- INICIAR COMBATE ---");
+        System.out.println(combate.iniciarCombate());
+        System.out.println("--- ESTADO COMBATE ---");
+        System.out.println( combate.obtenerEstadoCombate());
+        System.out.println("--- TURNOS ---");
+        System.out.println(combate.turnoJugador(1));
+        System.out.println(combate.turnoEnemigo());
+        System.out.println(combate.turnoJugador(2));
+        System.out.println(combate.turnoEnemigo());
+        System.out.println(combate.turnoJugador(1));
+        System.out.println(combate.turnoEnemigo());
+        System.out.println("--- ESTADO FINAL DEL COMBATE ---");
+        System.out.println(combate.obtenerEstadoCombate());
 
     }
     

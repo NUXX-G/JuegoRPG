@@ -2,6 +2,7 @@ package juegorpg.modelo.personaje;
 import java.util.ArrayList;
 import juegorpg.modelo.Entidad;
 import juegorpg.modelo.habilidad.Habilidad;
+import juegorpg.modelo.item.Consumible;
 
 public abstract class Personaje extends Entidad
 {
@@ -72,6 +73,31 @@ public abstract class Personaje extends Entidad
 
         
         System.out.println(mostrarHabilidades);
+    }
+    
+    public String usarConsumible(Consumible consumible)
+    {
+        if (consumible.getEfectoVida() > 0) 
+        {
+            curar(consumible.getEfectoVida());
+        }
+        
+        if (consumible.getEfectoMana() > 0)
+        {
+            if (this instanceof Mago) 
+            {
+                Mago mago = (Mago) this;
+                mago.setManaActual(mago.getManaActual() + consumible.getEfectoMana());
+                if (mago.getManaActual() > mago.getManaMaximo()) 
+                {
+                    mago.setManaActual(mago.getManaMaximo());
+                }
+            }
+        }
+        
+        String mensajeConsumible = getNombre() + " uso " + consumible.getNombre() + "! +" + consumible.getEfectoVida() + " HP +" + consumible.getEfectoMana() + " MP";
+        
+        return mensajeConsumible;
     }
     
     protected abstract void alSubirNivel(); 
