@@ -75,8 +75,8 @@ java -cp out juegorpg.main.JuegoRPG
 | Fase 1 | Modelo base — Personajes y jerarquía |  Terminado |
 | Fase 2 | Enemigos | Terminado |
 | Fase 3 | Items e Inventario |  Terminado |
-| Fase 4 | Habilidades |  En Progreso |
-| Fase 5 | RNG y Sistema de Combate |  Pendiente |
+| Fase 4 | Habilidades |  Terminado |
+| Fase 5 | RNG y Sistema de Combate |  En Progreso |
 | Fase 6 | Narrativa ramificada |  Pendiente |
 | Fase 7 | Sistema de guardado |  Pendiente |
 | Fase 8 | Interfaz gráfica Swing |  Pendiente |
