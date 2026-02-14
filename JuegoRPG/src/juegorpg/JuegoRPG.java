@@ -126,6 +126,36 @@ public class JuegoRPG
         System.out.println("Danio: " + bossFinal1.calcularDanioAtaque());
         System.out.println(bossFinal1.toString());
         System.out.println("");
+        
+        
+        //Habilidades
+        Guerrero conan = new Guerrero("Conan");
+        Mago merlin = new Mago("Merlin");
+        Arquero robin = new Arquero("Robin");
+        Ladron percy = new Ladron("Percy");
+        
+        System.out.println("--- MOSTRAR HABILIDADES ---");
+        conan.mostrarHabilidades();
+        merlin.mostrarHabilidades();
+        robin.mostrarHabilidades();
+        percy.mostrarHabilidades();
+        System.out.println("");
+        
+        System.out.println("--- OBTENER HABILIDAD ---");
+        System.out.println(conan.obtenerHabilidad(0));
+        System.out.println(merlin.obtenerHabilidad(0));
+        System.out.println(robin.obtenerHabilidad(0));
+        System.out.println(percy.obtenerHabilidad(0));
+        System.out.println("");
+        
+        System.out.println("--- CALCULAR DANIO ---");
+        System.out.println("Daño de " + conan.getNombre() + " " + conan.obtenerHabilidad(0).calcularDanio(conan.getAtaque()));
+        System.out.println("Daño de " + merlin.getNombre() + " " + merlin.obtenerHabilidad(0).calcularDanio(merlin.getAtaque()));
+        System.out.println("Daño de " + robin.getNombre() + " " + robin.obtenerHabilidad(0).calcularDanio(robin.getAtaque()));
+        System.out.println("Daño de " + percy.getNombre() + " " + percy.obtenerHabilidad(0).calcularDanio(percy.getAtaque()));
+        System.out.println("");
+        
+        
     }
     
 }

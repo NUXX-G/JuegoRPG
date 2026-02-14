@@ -1,5 +1,7 @@
 package juegorpg.modelo.personaje;
 
+import juegorpg.modelo.habilidad.HabilidadFisica;
+
 public class Ladron extends Personaje
 {
     private int esquiva;
@@ -8,6 +10,8 @@ public class Ladron extends Personaje
     {
         super(nombre, 80, 10, 4, 1);
         esquiva = 30;
+        aprenderHabilidad(new HabilidadFisica("Apuñalar", "Ataque rápido por la espalda", 15, 10, 2.5));
+        aprenderHabilidad(new HabilidadFisica("Golpe Silencioso", "Ataque sigiloso", 10, 8, 2.0));
     }
 
     

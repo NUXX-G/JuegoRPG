@@ -1,5 +1,7 @@
 package juegorpg.modelo.personaje;
 
+import juegorpg.modelo.habilidad.HabilidadFisica;
+
 public class Arquero extends Personaje
 {
     private int precision;
@@ -8,6 +10,8 @@ public class Arquero extends Personaje
     {
         super(nombre, 90, 12, 5, 1);
         precision = 70;
+        aprenderHabilidad(new HabilidadFisica("Disparo Certero", "Flecha con puntería perfecta", 8, 12, 1.8));
+        aprenderHabilidad(new HabilidadFisica("Lluvia de Flechas", "Múltiples disparos", 12, 18, 1.5));
     }
 
     @Override

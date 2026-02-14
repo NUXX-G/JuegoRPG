@@ -1,5 +1,7 @@
 package juegorpg.modelo.personaje;
 
+import juegorpg.modelo.habilidad.HabilidadFisica;
+
 public class Guerrero extends Personaje
 {
     private int rabia;
@@ -7,6 +9,8 @@ public class Guerrero extends Personaje
     public Guerrero(String nombre) 
     {
         super(nombre, 120, 15, 8, 1);
+        aprenderHabilidad(new HabilidadFisica("Golpe Devastador", "Golpe brutal con arma", 10, 15, 2.0));
+        aprenderHabilidad(new HabilidadFisica("Embestida", "Carga con el escudo", 5, 10, 1.5));
     }
 
 

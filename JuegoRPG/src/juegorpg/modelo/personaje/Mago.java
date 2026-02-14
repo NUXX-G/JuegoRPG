@@ -1,5 +1,7 @@
 package juegorpg.modelo.personaje;
 
+import juegorpg.modelo.habilidad.HabilidadMagica;
+
 public class Mago extends Personaje
 {
     private int manaMaximo;
@@ -10,6 +12,8 @@ public class Mago extends Personaje
         super(nombre, 70, 8, 3, 1);
         this.manaMaximo = 100;
         this.manaActual = manaMaximo;
+        aprenderHabilidad(new HabilidadMagica("Bola de Fuego", "Lanza una esfera ardiente", 20, 25, 30));
+        aprenderHabilidad(new HabilidadMagica("Rayo Arcano", "Descarga mágica concentrada", 15, 20, 20));
     }
 
     @Override
