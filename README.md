@@ -78,8 +78,8 @@ java -cp out juegorpg.main.JuegoRPG
 | Fase 4 | Habilidades |  Terminado |
 | Fase 5 | RNG y Sistema de Combate |  Terminado |
 | Fase 6 | Narrativa ramificada |  Terminado |
-| Fase 7 | Sistema de guardado |  En Progreso |
-| Fase 8 | Interfaz gráfica Swing |  Pendiente |
+| Fase 7 | Sistema de guardado |  Terminado |
+| Fase 8 | Interfaz gráfica Swing |  En Progreso |
 | Fase 9 | Integración final |  Pendiente |
 
 ---
