@@ -1,6 +1,7 @@
 package juegorpg.modelo;
+import java.io.Serializable;
 
-public abstract class Entidad 
+public abstract class Entidad implements Serializable
 {
     private String nombre;
     private int vidaMaxima;

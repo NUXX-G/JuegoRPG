@@ -14,6 +14,8 @@ import juegorpg.modelo.personaje.Guerrero;
 import juegorpg.modelo.personaje.Ladron;
 import juegorpg.modelo.personaje.Mago;
 import juegorpg.combate.SistemaCombate;
+import juegorpg.guardado.GestorGuardado;
+import juegorpg.guardado.PartidaGuardada;
 import juegorpg.modelo.enemigo.Enemigo;
 import juegorpg.modelo.personaje.Personaje;
 import juegorpg.narrativa.ArbolNarrativo;
@@ -265,5 +267,29 @@ public class JuegoRPG
         {
             System.out.println("Enemigo: " + arbolNarrativo.getNodoActual().getEnemigo().getNombre());
         }
+        System.out.println("");
+        
+        
+        //Test guardado de la partida
+        Personaje testHero = new Guerrero("TestHero");
+        Inventario inventarioTest = new Inventario();
+        inventarioTest.agregarItem(new Arma("Espada de prueba", "Arma de test", 10, 5));
+        inventarioTest.agregarItem(new Consumible("Pocion de prueba", "Cura vida", 5, 20, 0));
+        inventarioTest.agregarItem(new Armadura("Casco de prueba", "Protege cabeza", 8, 3));
+        ArbolNarrativo arbolTest = new ArbolNarrativo();
+        arbolTest.iniciar();
+
+        System.out.println("--- GUARDAR PARTIDA ---");
+        PartidaGuardada partidaTest = new PartidaGuardada("PlayerTest", testHero, arbolTest, inventarioTest);
+        GestorGuardado.guardarPartida(partidaTest, "partida_test");
+        System.out.println("Partida guardada correctamente.");
+        System.out.println("");
+
+        System.out.println("--- CARGAR PARTIDA ---");
+        PartidaGuardada partidaCargada = GestorGuardado.cargarPartida("partida_test");
+        System.out.println(partidaCargada);
+        System.out.println("Personaje: " + partidaCargada.getPersonaje());
+        System.out.println("");
+        
     }
 }

@@ -1,6 +1,7 @@
 package juegorpg.narrativa;
+import java.io.Serializable;
 
-public class Opcion 
+public class Opcion implements Serializable
 {
     private String texto;
     private String nodoDestino;

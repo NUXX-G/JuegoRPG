@@ -4,7 +4,9 @@ import juegorpg.modelo.enemigo.BossFinal;
 import juegorpg.modelo.enemigo.Dragon;
 import juegorpg.modelo.enemigo.Goblin;
 import juegorpg.modelo.enemigo.Orco;
-public class ArbolNarrativo 
+import java.io.Serializable;
+
+public class ArbolNarrativo implements Serializable
 {
     private ArrayList<Nodo> nodos;
     private Nodo nodoActual;

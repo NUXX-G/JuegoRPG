@@ -1,8 +1,9 @@
 package juegorpg.modelo.item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventario 
+public class Inventario implements Serializable
 {
     private static final int CAPACIDAD_MAXIMA = 20;
     private ArrayList<Item> items;

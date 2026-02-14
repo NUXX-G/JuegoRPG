@@ -1,6 +1,7 @@
 package juegorpg.modelo.habilidad;
+import java.io.Serializable;
 
-public abstract class Habilidad 
+public abstract class Habilidad implements Serializable
 {
     private String nombre;
     private String descripcion;

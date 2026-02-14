@@ -1,7 +1,9 @@
 package juegorpg.narrativa;
 import java.util.ArrayList;
 import juegorpg.modelo.enemigo.Enemigo;
-public class Nodo 
+import java.io.Serializable;
+
+public class Nodo implements Serializable
 {
     private String id;
     private String descripcion;

@@ -1,6 +1,7 @@
 package juegorpg.modelo.item;
+import java.io.Serializable;
 
-public abstract class Item 
+public abstract class Item implements Serializable
 {
     private String nombre;
     private String descripcion;
