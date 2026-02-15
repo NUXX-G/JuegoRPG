@@ -1,110 +1,194 @@
-# JuegoRPG — Java Turn-Based RPG
+#  RPG - Aventura Épica
 
-> Proyecto personal desarrollado en Java puro como parte de mi aprendizaje en 1º CFGS DAM.  
-> Un RPG por turnos con narrativa tipo novela gráfica, combate estilo Pokémon/Final Fantasy e interfaz gráfica con Swing.
-
----
-
-##  Descripción
-
-JuegoRPG es un juego de rol por turnos desarrollado íntegramente en Java sin librerías externas.  
-El jugador avanza por una historia ramificada tomando decisiones que afectan qué combates enfrenta y con qué dificultad.  
-Cada decisión importa: el camino que elijas determina los enemigos, el botín y el final que obtienes.
+RPG por turnos desarrollado en Java con interfaz gráfica Swing. Proyecto educativo que demuestra conocimientos en programación orientada a objetos, estructuras de datos, persistencia y desarrollo de interfaces.
 
 ---
 
-## Características
+## 📸 Capturas de Pantalla
 
--  **4 clases de personaje** — Guerrero, Mago, Arquero y Ladrón, cada uno con stats, mecánicas y habilidades únicas
--  **Combate por turnos** — sistema de combate estilo Pokémon/Final Fantasy con ataques, habilidades, objetos y huida
--  **Narrativa ramificada** — historia con múltiples caminos y decisiones que afectan al desarrollo de la partida
--  **Sistema RNG** — críticos, esquivas, drops de objetos y eventos aleatorios
--  **Inventario y equipamiento** — armas, armaduras y consumibles con estadísticas propias
--  **Sistema de guardado** — guarda y carga partidas mediante serialización Java
--  **Interfaz gráfica** — desarrollada con `javax.swing`, sin instalación adicional necesaria
+### Menú Principal
+![Menú Principal](screenshots/Captura_Menu_Principal.png)
+
+### Selección de Personaje
+![Selección de Personaje](screenshots/Captura_Seleccion_Personaje.png)
+
+### Sistema de Combate
+![Combate](screenshots/Captura_Combate.png)
+
+### Inventario
+![Inventario](screenshots/Captura_Inventario.png)
 
 ---
 
-##  Arquitectura del proyecto
+##  Características
 
-El proyecto aplica principios de **Programación Orientada a Objetos**:
+###  Sistema de Personajes
+- **4 clases jugables**: Guerrero, Mago, Arquero, Ladrón
+- Cada clase con mecánicas únicas (rabia, maná, precisión, esquiva)
+- Sistema de experiencia y subida de nivel
+- 2 habilidades especiales por clase
 
-- **Herencia** — jerarquía `Entidad → Personaje → Guerrero/Mago/Arquero/Ladrón`
-- **Clases abstractas** — `Entidad`, `Personaje`, `Enemigo`, `Item`, `Habilidad`
-- **Polimorfismo** — cada clase implementa `calcularDanioAtaque()` y `alSubirNivel()` de forma distinta
-- **Encapsulación** — todos los atributos `private` con getters/setters controlados
-- **Serialización** — guardado de partida con `java.io.Serializable`
+###  Sistema de Combate
+- Combate por turnos estratégico
+- 4 tipos de enemigos con mecánicas diferenciadas
+- Generación procedural de enemigos según nivel
+- Boss final con sistema de fases
 
+###  Inventario y Items
+- Sistema de inventario con capacidad limitada (20 slots)
+- 3 tipos de items: Armas, Armaduras, Consumibles
+- Sistema de drops aleatorios tras combates
+- Compra/venta de items
+
+###  Narrativa Ramificada
+- 12 nodos narrativos interconectados
+- Múltiples caminos y decisiones
+- 2 finales diferentes (victoria/huida)
+- Exploración no lineal
+
+###  Sistema de Guardado
+- Guardado y carga de partidas mediante serialización
+- Persistencia del progreso del jugador
+- Fecha y hora de guardado
+
+###  Interfaz Gráfica
+- 6 pantallas diferentes con Swing
+- Navegación fluida entre pantallas
+- Mensajes dinámicos según oro acumulado
+
+---
+
+##  Tecnologías Utilizadas
+
+- **Lenguaje**: Java 21 LTS
+- **GUI**: Java Swing
+- **Persistencia**: Serialización (Java I/O)
+- **IDE**: NetBeans
+- **Control de versiones**: Git & GitHub
+
+---
+
+##  Estructura del Proyecto
 ```
 src/juegorpg/
-├── juegorpg/           → Punto de entrada (JuegoRPG.java)
+├── JuegoRPG.java (Main)
+├── combate/
+│   └── SistemaCombate.java
+├── guardado/
+│   ├── GestorGuardado.java
+│   └── PartidaGuardada.java
 ├── modelo/
 │   ├── Entidad.java
-│   ├── personaje/  → Personaje, Guerrero, Mago, Arquero, Ladron
-│   ├── enemigo/    → Enemigo, Goblin, Orco, Dragon, BossFinal
-│   ├── item/       → Item, Arma, Armadura, Consumible, Inventario
-│   └── habilidad/  → Habilidad, HabilidadFisica, HabilidadMagica
-├── rng/            → GeneradorRNG
-├── combate/        → SistemaCombate
-├── narrativa/      → Nodo, Opcion, ArbolNarrativo
-├── guardado/       → GestorGuardado
-└── vista/          → Pantallas Swing
+│   ├── enemigo/
+│   │   ├── Enemigo.java
+│   │   ├── Goblin.java
+│   │   ├── Orco.java
+│   │   ├── Dragon.java
+│   │   └── BossFinal.java
+│   ├── habilidad/
+│   │   ├── Habilidad.java
+│   │   ├── HabilidadFisica.java
+│   │   └── HabilidadMagica.java
+│   ├── item/
+│   │   ├── Item.java
+│   │   ├── Arma.java
+│   │   ├── Armadura.java
+│   │   ├── Consumible.java
+│   │   └── Inventario.java
+│   └── personaje/
+│       ├── Personaje.java
+│       ├── Guerrero.java
+│       ├── Mago.java
+│       ├── Arquero.java
+│       └── Ladron.java
+├── narrativa/
+│   ├── ArbolNarrativo.java
+│   ├── Nodo.java
+│   └── Opcion.java
+├── rng/
+│   └── GeneradorRNG.java
+└── vista/
+    ├── VentanaPrincipal.java
+    ├── PantallaMenu.java
+    ├── PantallaSeleccionPersonaje.java
+    ├── PantallaExploracion.java
+    ├── PantallaCombate.java
+    ├── PantallaInventario.java
+    └── PantallaGameOver.java
 ```
 
 ---
 
-##  Cómo ejecutarlo
+##  Cómo Ejecutar
 
-### Requisitos
-- Java JDK 11 o superior → [Descargar JDK](https://www.oracle.com/java/technologies/downloads/)
-
-### Desde terminal
+### Opción 1: Ejecutar desde NetBeans
+1. Clona el repositorio:
 ```bash
-git clone https://github.com/NUXX-G/JuegoRPG.git
-cd JuegoRPG
-javac -d out -sourcepath src src/juegorpg/main/JuegoRPG.java
-java -cp out juegorpg.main.JuegoRPG
+   git clone https://github.com/NUXX-G/JuegoRPG.git
 ```
+2. Abre el proyecto en NetBeans
+3. Ejecuta `JuegoRPG.java`
+
+### Opción 2: Ejecutar el archivo JAR
+1. Descarga `JuegoRPG.jar` desde [Releases](https://github.com/NUXX-G/JuegoRPG/releases)
+2. Ejecuta desde terminal:
+```bash
+   java -jar JuegoRPG.jar
+```
+3. O haz doble clic en el archivo (requiere Java 21+ instalado)
 
 ---
 
-##  Estado del desarrollo
+##  Conceptos de Programación Implementados
 
-| Fase | Descripción | Estado |
-|------|-------------|--------|
-| Fase 1 | Modelo base — Personajes y jerarquía |  Terminado |
-| Fase 2 | Enemigos | Terminado |
-| Fase 3 | Items e Inventario |  Terminado |
-| Fase 4 | Habilidades |  Terminado |
-| Fase 5 | RNG y Sistema de Combate |  Terminado |
-| Fase 6 | Narrativa ramificada |  Terminado |
-| Fase 7 | Sistema de guardado |  Terminado |
-| Fase 8 | Interfaz gráfica Swing |  En Progreso |
-| Fase 9 | Integración final |  Pendiente |
+### Programación Orientada a Objetos
+- ✅ Herencia (Entidad → Personaje → Guerrero/Mago/Arquero/Ladrón)
+- ✅ Polimorfismo (calcularDanioAtaque() diferente en cada clase)
+- ✅ Clases abstractas (Entidad, Personaje, Enemigo, Habilidad, Item)
+- ✅ Encapsulación (atributos private, getters/setters)
+- ✅ Composición (Personaje HAS-A Inventario, HAS-A Habilidades)
 
----
+### Estructuras de Datos
+- ✅ ArrayList para colecciones dinámicas
+- ✅ Árbol de decisiones (narrativa ramificada)
 
-##  Conceptos aplicados
+### Patrones de Diseño
+- ✅ Strategy (diferentes algoritmos de daño por clase)
+- ✅ Template Method (alSubirNivel() en cada personaje)
 
-Este proyecto fue construido para practicar y demostrar dominio de:
-
-- Programación Orientada a Objetos en Java
-- Diseño de jerarquías de herencia
-- Clases abstractas e interfaces
-- Polimorfismo y sobreescritura de métodos
-- Serialización de objetos (`java.io`)
-- Interfaces gráficas con `javax.swing`
-- Gestión de proyectos con Git y GitHub
+### Persistencia
+- ✅ Serialización de objetos
+- ✅ Manejo de archivos (I/O)
 
 ---
 
-##  Autor
+##  Roadmap Futuro
 
-**Nelson Filipe Fardilha Karlsson**  
-Estudiante de 1º CFGS DAM
+### Versión 2.0 - Web (En desarrollo)
+- [ ] Backend con **Spring Boot**
+- [ ] API REST para sistema de combate
+- [ ] Base de datos con **JPA/Hibernate** (MySQL/PostgreSQL)
+- [ ] Sistema de autenticación (**Spring Security**)
+- [ ] Frontend web (HTML/CSS/JavaScript + Fetch API)
+- [ ] Despliegue en VPS personal
+
+### Funcionalidades Adicionales
+- [ ] Sistema de equipamiento funcional
+- [ ] Más clases de personajes
+- [ ] Misiones secundarias
+- [ ] Tienda de items
+- [ ] Multijugador (PvP)
 
 ---
 
 ##  Licencia
 
-Proyecto educativo de uso libre. Puedes usarlo como referencia o base para tus propios proyectos.
+Este proyecto es de código abierto bajo la licencia MIT.
+
+---
+
+##  Autor
+
+**Nelson Filipe Fardilha Karlsson**
+
+---
