@@ -6,7 +6,7 @@ public class BossFinal extends Enemigo
 
     public BossFinal(int nivel) 
     {
-        super("Señor de la Oscuridad", nivel * 150, nivel * 15, nivel * 10, nivel, nivel * 200, nivel * 100, 3);
+        super("Señor de la Oscuridad", nivel * 80, nivel * 15, nivel * 10, nivel, nivel * 500, nivel * 100, 3);
         this.fase = 1;
     }
     

@@ -22,6 +22,7 @@ public class Mago extends Personaje
         setVidaMaxima(getVidaMaxima() + 10);
         setVidaActual(getVidaMaxima());
         setAtaque(getAtaque() + 5);
+        setDefensa(getDefensa() + 1);
         manaMaximo += 20;
         manaActual = manaMaximo;
     }

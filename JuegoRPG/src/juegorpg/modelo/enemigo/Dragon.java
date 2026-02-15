@@ -6,7 +6,7 @@ public class Dragon extends Enemigo
     
     public Dragon(int nivel) 
     {
-        super("Dragon", nivel * 80, nivel * 12, nivel * 6, nivel, nivel * 80, nivel * 40, 3);
+        super("Dragon", nivel * 30, nivel * 12, nivel * 6, nivel, nivel * 200, nivel * 40, 3);
     }
 
     @Override

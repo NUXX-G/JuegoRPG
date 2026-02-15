@@ -33,10 +33,12 @@ public class Ladron extends Personaje
     @Override
     protected void alSubirNivel() 
     {
-        setAtaque(getAtaque() + 2);
         setVidaMaxima(getVidaMaxima() + 8);
         setVidaActual(getVidaMaxima());
+        setAtaque(getAtaque() + 2);
+        setDefensa(getDefensa() + 1);
         esquiva += 3;
+    
         if (esquiva > 60) 
         {
             esquiva = 60;

@@ -34,7 +34,7 @@ public abstract class Personaje extends Entidad
     {
         setNivel(getNivel() + 1);
         experiencia = 0;
-        experienciaSiguienteNivel = (int) (experienciaSiguienteNivel * 1.5);
+        experienciaSiguienteNivel = (int) (experienciaSiguienteNivel * 1.2);
         alSubirNivel();
     }  
     

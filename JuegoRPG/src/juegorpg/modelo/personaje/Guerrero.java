@@ -29,10 +29,10 @@ public class Guerrero extends Personaje
     @Override
     protected void alSubirNivel() 
     {
-        setVidaMaxima(getVidaMaxima() + 20);
+        setVidaMaxima(getVidaMaxima() + 80);
         setVidaActual(getVidaMaxima());
-        setAtaque(getAtaque() + 3);
-        setDefensa(getDefensa() + 2);
+        setAtaque(getAtaque() + 8);
+        setDefensa(getDefensa() + 4);
     }
     
     @Override

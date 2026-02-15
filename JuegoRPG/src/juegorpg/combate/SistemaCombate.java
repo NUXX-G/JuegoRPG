@@ -1,5 +1,9 @@
 package juegorpg.combate;
 
+import juegorpg.modelo.item.Arma;
+import juegorpg.modelo.item.Armadura;
+import juegorpg.modelo.item.Inventario;
+import juegorpg.rng.GeneradorRNG;
 import juegorpg.modelo.enemigo.Enemigo;
 import juegorpg.modelo.personaje.Personaje;
 
@@ -8,11 +12,13 @@ public class SistemaCombate
     private Personaje jugador;
     private Enemigo enemigo;
     private int turnoActual;
+    private Inventario inventario;
     
-    public SistemaCombate(Personaje jugador, Enemigo enemigo)
+    public SistemaCombate(Personaje jugador, Enemigo enemigo, Inventario inventario)
     {
         this.jugador = jugador;
         this.enemigo = enemigo;
+        this.inventario = inventario;
         turnoActual = 1;
     }
     
@@ -47,9 +53,27 @@ public class SistemaCombate
         
         if (!enemigo.estaVivo()) 
         {
-            jugador.setExperiencia(jugador.getExperiencia() + enemigo.getExperienciaAlMorir());
+            jugador.ganarExperiencia(enemigo.getExperienciaAlMorir());
             jugador.setOro(jugador.getOro() + enemigo.getOroAlMorir());
-            turnoJugador = jugador.getNombre() + " ha matado al " + enemigo.getNombre() + " ha conseguido " + enemigo.getExperienciaAlMorir() + " experiencia y " + enemigo.getOroAlMorir() + " de oro";
+    
+            String mensajeVictoria = jugador.getNombre() + " ha matado al " + enemigo.getNombre() + 
+                            " ha conseguido " + enemigo.getExperienciaAlMorir() + 
+                            " experiencia y " + enemigo.getOroAlMorir() + " de oro";
+    
+            int drop = GeneradorRNG.entero(1, 10);
+    
+            if (drop <= 3) 
+            {
+                Arma arma = generarArmaAleatoria(enemigo.getNivel());
+                mensajeVictoria += "\n¡Has obtenido: " + arma.getNombre() + "!";
+            } 
+            else if (drop <= 6) 
+            {
+                Armadura armadura = generarArmaduraAleatoria(enemigo.getNivel());
+                mensajeVictoria += "\n¡Has obtenido: " + armadura.getNombre() + "!";
+            }
+    
+            turnoJugador = mensajeVictoria;
         }
         
         turnoActual++;
@@ -86,6 +110,28 @@ public class SistemaCombate
                               enemigo.toString() + "\n"+
                               "=========================";
         return estadoCombate;
+    }
+    
+    private Arma generarArmaAleatoria(int nivel) 
+    {
+        String[] nombres = {"Espada", "Hacha", "Lanza", "Daga", "Martillo"};
+        String nombre = nombres[GeneradorRNG.entero(0, nombres.length - 1)];
+        int bonus = nivel * GeneradorRNG.entero(2, 5);
+    
+        Arma arma = new Arma(nombre + " +" + bonus, "Arma encontrada", nivel * 10, bonus);
+        inventario.agregarItem(arma);
+        return arma;
+    }
+
+    private Armadura generarArmaduraAleatoria(int nivel) 
+    {
+        String[] nombres = {"Casco", "Peto", "Botas", "Guantes", "Escudo"};
+        String nombre = nombres[GeneradorRNG.entero(0, nombres.length - 1)];
+        int bonus = nivel * GeneradorRNG.entero(1, 3);
+    
+        Armadura armadura = new Armadura(nombre + " +" + bonus, "Armadura encontrada", nivel * 10, bonus);
+        inventario.agregarItem(armadura);
+        return armadura;
     }
 
     public Personaje getJugador() 

@@ -4,7 +4,7 @@ public class Goblin extends Enemigo
 {
     public Goblin(int nivel) 
     {
-        super("Goblin", nivel * 20, nivel * 4, nivel * 1, nivel, nivel * 15, nivel * 5, 1);
+        super("Goblin", nivel * 20, nivel * 4, nivel * 1, nivel, nivel * 50, nivel * 5, 1);
     }
 
     @Override

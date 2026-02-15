@@ -5,7 +5,7 @@ public class Orco extends Enemigo
 
     public Orco(int nivel) 
     {
-        super("Orco", nivel * 40, nivel * 7, nivel * 3, nivel, nivel * 30, nivel * 12, 2);
+        super("Orco", nivel * 40, nivel * 7, nivel * 3, nivel, nivel * 100, nivel * 12, 2);
     }
 
     @Override

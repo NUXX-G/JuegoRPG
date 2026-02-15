@@ -17,16 +17,16 @@ public class Arquero extends Personaje
     @Override
     protected void alSubirNivel() 
     {
+        setVidaMaxima(getVidaMaxima() + 10);
+        setVidaActual(getVidaMaxima());
         setAtaque(getAtaque() + 2);
         setDefensa(getDefensa() + 1);
-        
         precision += 5;
-        
+    
         if (precision > 95) 
         {
             precision = 95;
         }
-
     }
 
     @Override
