@@ -181,12 +181,6 @@ src/juegorpg/
 
 ---
 
-##  Licencia
-
-Este proyecto es de código abierto bajo la licencia MIT.
-
----
-
 ##  Autor
 
 **Nelson Filipe Fardilha Karlsson**
