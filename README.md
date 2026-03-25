@@ -10,7 +10,7 @@ RPG por turnos desarrollado en Java con interfaz gráfica Swing. Proyecto educat
 ![Menú Principal](screenshots/Captura_Menu_Principal.png)
 
 ### Selección de Personaje
-![Selección de Personaje](screenshots/Captura_Seleccion_Personaje.png)
+![Selección de Personaje](screenshots/Captura_Menu_Personaje.png)
 
 ### Sistema de Combate
 ![Combate](screenshots/Captura_Combate.png)
