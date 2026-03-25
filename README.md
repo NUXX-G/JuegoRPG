@@ -145,23 +145,23 @@ src/juegorpg/
 ##  Conceptos de Programación Implementados
 
 ### Programación Orientada a Objetos
-- ✅ Herencia (Entidad → Personaje → Guerrero/Mago/Arquero/Ladrón)
-- ✅ Polimorfismo (calcularDanioAtaque() diferente en cada clase)
-- ✅ Clases abstractas (Entidad, Personaje, Enemigo, Habilidad, Item)
-- ✅ Encapsulación (atributos private, getters/setters)
-- ✅ Composición (Personaje HAS-A Inventario, HAS-A Habilidades)
+-  Herencia (Entidad → Personaje → Guerrero/Mago/Arquero/Ladrón)
+-  Polimorfismo (calcularDanioAtaque() diferente en cada clase)
+-  Clases abstractas (Entidad, Personaje, Enemigo, Habilidad, Item)
+-  Encapsulación (atributos private, getters/setters)
+-  Composición (Personaje HAS-A Inventario, HAS-A Habilidades)
 
 ### Estructuras de Datos
-- ✅ ArrayList para colecciones dinámicas
-- ✅ Árbol de decisiones (narrativa ramificada)
+-  ArrayList para colecciones dinámicas
+-  Árbol de decisiones (narrativa ramificada)
 
 ### Patrones de Diseño
-- ✅ Strategy (diferentes algoritmos de daño por clase)
-- ✅ Template Method (alSubirNivel() en cada personaje)
+-  Strategy (diferentes algoritmos de daño por clase)
+-  Template Method (alSubirNivel() en cada personaje)
 
 ### Persistencia
-- ✅ Serialización de objetos
-- ✅ Manejo de archivos (I/O)
+-  Serialización de objetos
+-  Manejo de archivos (I/O)
 
 ---
 
