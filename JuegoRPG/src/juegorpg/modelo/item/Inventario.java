@@ -3,95 +3,123 @@ package juegorpg.modelo.item;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventario implements Serializable
+/**
+ * El inventario del jugador. Guarda hasta 20 items.
+ * Tiene metodos para agregar, quitar y obtener items por indice.
+ * Se serializa junto con la partida guardada para persistir el progreso.
+ *
+ * @author Nelson Filipe Fardilha Karlsson
+ * @version 1.0
+ */
+public class Inventario implements Serializable 
 {
+
+    /** Capacidad maxima de slots del inventario. */
     private static final int CAPACIDAD_MAXIMA = 20;
+
     private ArrayList<Item> items;
-    
-    public Inventario()
+
+    /**
+     * Crea un inventario vacio listo para usarse.
+     */
+    public Inventario() 
     {
         this.items = new ArrayList<>();
     }
-    
-    public boolean agregarItem(Item item)
+
+    /**
+     * Intenta agregar un item al inventario.
+     * Si ya esta lleno (20 items), no lo agrega y devuelve false.
+     *
+     * @param item item a agregar
+     * @return true si se agrego, false si el inventario estaba lleno
+     */
+    public boolean agregarItem(Item item) 
     {
-        boolean agregar = false;
-        
         if (items.size() < CAPACIDAD_MAXIMA) 
         {
             items.add(item);
-            agregar = true;
+            return true;
         }
-        
-        return agregar;
+        return false;
     }
-    
-    public boolean quitarItem(int indice)
+
+    /**
+     * Quita un item del inventario por su posicion.
+     * Si el indice esta fuera de rango, no hace nada y devuelve false.
+     *
+     * @param indice posicion del item a quitar (empieza en 0)
+     * @return true si se quito, false si el indice era invalido
+     */
+    public boolean quitarItem(int indice) 
     {
-        boolean quitar = false;
-        
-        if (indice < items.size() && indice >= 0) 
+        if (indice >= 0 && indice < items.size()) 
         {
             items.remove(indice);
-            quitar = true;
+            return true;
         }
-        
-        return quitar;
+        return false;
     }
-    
-    public Item obtenerItem(int indice)
+
+    /**
+     * Devuelve el item en la posicion indicada sin quitarlo.
+     * Devuelve null si el indice esta fuera de rango.
+     *
+     * @param indice posicion del item (empieza en 0)
+     * @return el item o null si no existe en esa posicion
+     */
+    public Item obtenerItem(int indice) 
     {
-        if (indice < 0 || indice >= items.size()) 
-        {
-            return null;
-        }
-        
+        if (indice < 0 || indice >= items.size()) return null;
         return items.get(indice);
     }
-    
+
+    /**
+     * Devuelve cuantos items hay actualmente en el inventario.
+     *
+     * @return numero de items guardados
+     */
     public int getCantidadActual() 
-    {
-        return items.size();
+    { 
+        return items.size(); 
     }
-    
-    public boolean estaLleno()
-    {
-        boolean lleno = false;
-        
-        if (items.size() >= CAPACIDAD_MAXIMA) 
-        {
-            lleno = true;
-        }
-        
-        return lleno;
+
+    /**
+     * Comprueba si el inventario esta lleno (20 items).
+     *
+     * @return true si esta al maximo de capacidad
+     */
+    public boolean estaLleno() 
+    { 
+        return items.size() >= CAPACIDAD_MAXIMA; 
     }
-    
-    public boolean estaVacio()
-    {
-        boolean vacio = false;
-        
-        if (items.size() == 0) 
-        {
-            vacio = true;
-        }
-        
-        return vacio;
+
+    /**
+     * Comprueba si el inventario esta completamente vacio.
+     *
+     * @return true si no hay ningun item
+     */
+    public boolean estaVacio() 
+    { 
+        return items.isEmpty(); 
     }
-    
-    public void mostrarInventario()
+
+    /**
+     * Imprime el inventario completo por consola.
+     * Se usa para depuracion; la vista tiene su propia representacion.
+     */
+    public void mostrarInventario() 
     {
-        String inventarioMostrar = "El inventario esta vacio.";
-        if (items.size() > 0) 
+        if (items.isEmpty()) 
         {
-            inventarioMostrar = "=== INVENTARIO (" + items.size() + "/" + CAPACIDAD_MAXIMA + ") ====" + "\n";
-            for (int i = 0; i < items.size(); i++) 
-            {
-                inventarioMostrar += "[" + (i + 1) + "] " + items.get(i).toString() + "\n";
-            }
-            
-            inventarioMostrar += "===================" + "\n";
+            System.out.println("El inventario esta vacio.");
+            return;
         }
-        
-        System.out.println(inventarioMostrar);
+        System.out.println("=== INVENTARIO (" + items.size() + "/" + CAPACIDAD_MAXIMA + ") ====");
+        for (int i = 0; i < items.size(); i++) 
+        {
+            System.out.println("[" + (i + 1) + "] " + items.get(i).toString());
+        }
+        System.out.println("===================");
     }
 }

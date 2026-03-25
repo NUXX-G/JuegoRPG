@@ -3,68 +3,73 @@ package juegorpg.vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class PantallaGameOver extends JPanel 
+/**
+ * Pantalla de fin de partida. Se muestra tanto si el jugador gana como si pierde.
+ * Si es victoria, muestra "VICTORIA" en verde y un mensaje segun el oro acumulado.
+ * Si es derrota, muestra "DERROTA" en rojo. En ambos casos hay un boton
+ * para volver al menu principal y empezar de nuevo.
+ *
+ * @author Nelson Filipe Fardilha Karlsson
+ * @version 1.0
+ */
+public class PantallaGameOver extends UITheme.GradientPanel 
 {
+
     private VentanaPrincipal ventana;
-    
+
+    /**
+     * Crea la pantalla de fin de partida segun el resultado.
+     * Si es victoria y hay personaje disponible, calcula el mensaje
+     * de oro segun cuanto acumulo durante la partida.
+     *
+     * @param ventana  referencia a la ventana principal para navegar al menu
+     * @param victoria true si el jugador gano, false si fue derrotado
+     */
     public PantallaGameOver(VentanaPrincipal ventana, boolean victoria) 
     {
         this.ventana = ventana;
-        
         setLayout(new BorderLayout());
-        
-        String mensaje = victoria ? "¡VICTORIA!" : "DERROTA";
-        JLabel lblMensaje = new JLabel(mensaje, SwingConstants.CENTER);
-        lblMensaje.setFont(new Font("Arial", Font.BOLD, 48));
-        
-        JPanel panelCentro = new JPanel();
-        panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
-        lblMensaje.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panelCentro.add(lblMensaje);
-        
+
+        // CENTRO: titulo grande y mensaje de oro si es victoria
+        JPanel centro = new JPanel();
+        centro.setOpaque(false);
+        centro.setLayout(new BoxLayout(centro, BoxLayout.Y_AXIS));
+
+        JLabel lblTitulo = new JLabel(victoria ? "VICTORIA" : "DERROTA", SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Serif", Font.BOLD, 56));
+        lblTitulo.setForeground(victoria ? UITheme.EXITO : UITheme.PELIGRO);
+        lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblTitulo.setBorder(BorderFactory.createEmptyBorder(60, 0, 20, 0));
+        centro.add(lblTitulo);
+
+        // Mensaje de oro solo en victoria
         if (victoria && ventana.getPersonaje() != null) 
         {
             int oro = ventana.getPersonaje().getOro();
-            String mensajeOro = "";
-            
-            if (oro < 50) 
-            {
-                mensajeOro = "Apenas juntaste " + oro + " monedas...";
-            } 
-            else if (oro < 100) 
-            {
-                mensajeOro = "Conseguiste " + oro + " monedas. No está mal.";
-            } 
-            else if (oro < 200) 
-            {
-                mensajeOro = "¡" + oro + " monedas! Buen trabajo.";
-            } 
-            else if (oro < 500) 
-            {
-                mensajeOro = "¡Increíble! Tienes " + oro + " monedas.";
-            } 
-            else 
-            {
-                mensajeOro = "¡ERES RICO! " + oro + " monedas de oro!";
-            }
-            
-            JLabel lblOro = new JLabel(mensajeOro, SwingConstants.CENTER);
-            lblOro.setFont(new Font("Arial", Font.PLAIN, 20));
+            String msgOro;
+            if      (oro < 50)  msgOro = "Apenas juntaste " + oro + " monedas...";
+            else if (oro < 100) msgOro = "Conseguiste " + oro + " monedas. No esta mal.";
+            else if (oro < 200) msgOro = oro + " monedas. Buen trabajo.";
+            else if (oro < 500) msgOro = "Increible! " + oro + " monedas.";
+            else                msgOro = "Eres rico! " + oro + " monedas de oro!";
+
+            JLabel lblOro = new JLabel(msgOro, SwingConstants.CENTER);
+            lblOro.setFont(UITheme.FUENTE_SUBTITULO);
+            lblOro.setForeground(UITheme.TEXTO_SECUNDARIO);
             lblOro.setAlignmentX(Component.CENTER_ALIGNMENT);
-            panelCentro.add(Box.createVerticalStrut(20));
-            panelCentro.add(lblOro);
+            lblOro.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+            centro.add(lblOro);
         }
-        
-        add(panelCentro, BorderLayout.CENTER);
-        
-        JButton btnMenu = new JButton("Volver al Menú");
-        btnMenu.addActionListener(e -> 
-        {
-            ventana.mostrarPantallaMenu();
-        });
-        
-        JPanel panelBoton = new JPanel();
-        panelBoton.add(btnMenu);
-        add(panelBoton, BorderLayout.SOUTH);
+
+        add(centro, BorderLayout.CENTER);
+
+        // SUR: boton para volver al menu
+        JPanel sur = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 16));
+        sur.setOpaque(false);
+        JButton btnMenu = new JButton("Volver al menu");
+        UITheme.estilizarBoton(btnMenu);
+        btnMenu.addActionListener(e -> ventana.mostrarPantallaMenu());
+        sur.add(btnMenu);
+        add(sur, BorderLayout.SOUTH);
     }
 }
