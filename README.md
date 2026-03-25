@@ -1,6 +1,6 @@
 #  RPG - Aventura Épica
 
-RPG por turnos desarrollado en Java con interfaz gráfica Swing. Proyecto educativo que demuestra conocimientos en programación orientada a objetos, estructuras de datos, persistencia y desarrollo de interfaces.
+RPG por turnos desarrollado en Java con interfaz gráfica Swing. Proyecto realizado por pura diversion y para seguir aprendiendo mas sobre java 
 
 ---
 
@@ -10,7 +10,7 @@ RPG por turnos desarrollado en Java con interfaz gráfica Swing. Proyecto educat
 ![Menú Principal](screenshots/Captura_Menu_Principal.png)
 
 ### Selección de Personaje
-![Selección de Personaje](screenshots/Captura_Menu_Personaje.png)
+![Selección de Personaje](screenshots/Captura_Menu_Personajes.png)
 
 ### Sistema de Combate
 ![Combate](screenshots/Captura_Combate.png)
@@ -114,7 +114,10 @@ src/juegorpg/
     ├── PantallaExploracion.java
     ├── PantallaCombate.java
     ├── PantallaInventario.java
+    ├── UITheme.java
     └── PantallaGameOver.java
+
+
 ```
 
 ---
@@ -163,14 +166,6 @@ src/juegorpg/
 ---
 
 ##  Roadmap Futuro
-
-### Versión 2.0 - Web (En desarrollo)
-- [ ] Backend con **Spring Boot**
-- [ ] API REST para sistema de combate
-- [ ] Base de datos con **JPA/Hibernate** (MySQL/PostgreSQL)
-- [ ] Sistema de autenticación (**Spring Security**)
-- [ ] Frontend web (HTML/CSS/JavaScript + Fetch API)
-- [ ] Despliegue en VPS personal
 
 ### Funcionalidades Adicionales
 - [ ] Sistema de equipamiento funcional
