@@ -4,7 +4,7 @@ RPG por turnos desarrollado en Java con interfaz gráfica Swing. Proyecto realiz
 
 ---
 
-## 📸 Capturas de Pantalla
+##  Capturas de Pantalla
 
 ### Menú Principal
 ![Menú Principal](screenshots/Captura_Menu_Principal.png)
